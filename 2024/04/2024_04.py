@@ -122,3 +122,19 @@ for i in range(arr.shape[0]):
                     k += 1
                     l += 1
 print(r)
+r = 0
+
+for i in range(arr.shape[0]):
+    for j in range(arr.shape[1]):
+        if arr[i][j] == 'A':
+            if not (i > 0 and i < arr.shape[0] - 1 and j > 0 and j < arr.shape[1] - 1):
+                continue
+            corners = []
+            corners.append(arr[i+1][j+1])
+            corners.append(arr[i-1][j+1])
+            corners.append(arr[i+1][j-1])
+            corners.append(arr[i-1][j-1])
+            if corners.count('M') == 2 and corners.count('S') == 2 and corners[0] != corners[3]:
+                r += 1
+
+print(r)
